@@ -38,3 +38,8 @@ firewall_rule "http" do
     action :allow
     only_if { node['met-solr']['open_firewall_port'] == true }
 end
+
+
+service 'solr' do
+    action :nothing
+end

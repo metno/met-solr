@@ -24,6 +24,17 @@ Include `met-solr` in your node's `run_list`:
 }
 ```
 
+Here is an an example of how to use the met_solr_core to create a new core
+named "placenames" in your recipe:
+
+```
+met_solr_core "placenames" do
+          source "solr/cores/placenames"
+          action :create
+end
+```
+The solr core config directory "placenames" is placed in files/default/solr/cores/placenames
+
 ## License and Authors
 
 Author:: Espen Myrland (met-api@met.no)
