@@ -7,4 +7,4 @@ long_description 'Installs/Configures met-solr'
 version          '0.2.0'
 
 depends 'java'
-depends 'met-server',   '>= 0.50.1'
+depends 'met-server',   '>= 0.52.2'
