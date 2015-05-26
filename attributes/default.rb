@@ -9,7 +9,6 @@ default['met-solr']['solr']['data_dir'] = "/var/solr-#{node['met-solr']['solr'][
 default['met-solr']['solr']['url'] = "http://apache.uib.no/lucene/solr/#{node['met-solr']['solr']['version']}/solr-#{node['met-solr']['solr']['version']}.tgz"
 
 default['met-solr']['install_java'] = true
-default['met-solr']['open_firewall_port'] = true
 
 default['java']['install_flavor'] = 'openjdk'
 default['java']['jdk_version'] = '7'

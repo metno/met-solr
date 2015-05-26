@@ -31,15 +31,6 @@ execute "install solr" do
     end
 end
 
-firewall_rule "http" do
-    port node['met-solr']['solr']['port']
-    source '0.0.0.0/0'
-    protocol :tcp
-    action :allow
-    only_if { node['met-solr']['open_firewall_port'] == true }
-end
-
-
 service 'solr' do
     action :nothing
 end
