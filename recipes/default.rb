@@ -33,4 +33,5 @@ end
 
 service 'solr' do
     action :nothing
+    supports :status => true, :start => true, :stop => true, :restart => true
 end
