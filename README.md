@@ -1,6 +1,8 @@
 # met-solr-cookbook
 
-Installs the solr database.
+Installs the solr database. I allows for one server per node only.
+Installs zookeeper. It allows for one server per node only.
+You can pair a solr database and a zookeeper server on each node.
 
 ## Supported Platforms
 
