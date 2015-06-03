@@ -42,6 +42,7 @@ execute "install solr" do
         File.directory?("#{node['met-solr']['solr']['dir']}/solr-#{node['met-solr']['solr']['version']}")
     end
     notifies :run, "execute[enable_cloud]", :immediately
+    notifies :start, 'service[solr]', :immediately
 end
 
 service 'solr' do

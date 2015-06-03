@@ -30,3 +30,12 @@
     num=`grep -E  "server.[0-9]+=" /opt/zookeeper/conf/zoo.cfg| wc -l`
     [ "$num" -ge "3" ]
 }
+
+@test "solr listens on port 8987" {
+    run curl -k  http://localhost:8987
+    [ $status -eq 0 ]
+}
+
+# Skip testing that zookeeper runs. It will not start before the second converge
+# This node is not defined before converge is finished, and zookeeper config does
+# not contain this node, and therefore refuses to start.
