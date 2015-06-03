@@ -71,8 +71,7 @@ file "#{node['met-solr']['zookeeper']['data_dir']}/myid" do
     mode '640'
 end
 
-# Do twice. One for initial install, and one when config changes
-zookeepers = search(:node, "chef_environment:#{node.chef_environment} AND recipe:met-solr\\:\\:zookeeper")
+zookeepers = search(:node, "chef_environment:#{node.chef_environment} AND recipes:met-solr\\:\\:zookeeper")
 template "zookeeper config" do
     path "#{node['met-solr']['zookeeper']['install_dir']}/zookeeper/conf/zoo.cfg"
     source "zoo.cfg.erb"

@@ -50,7 +50,7 @@ service 'solr' do
     supports :status => true, :start => true, :stop => true, :restart => true
 end
 
-zookeepers = search(:node, "chef_environment:#{node.chef_environment} AND recipe:met-solr\\:\\:zookeeper")
+zookeepers = search(:node, "chef_environment:#{node.chef_environment} AND recipes:met-solr\\:\\:zookeeper")
 zkstring = ""
 zookeepers.each do |zookeeper|
     zkstring << zookeeper['ipaddress'] << ","
