@@ -60,7 +60,6 @@ end
 service "zookeeper" do
     supports :restart => true, :start => true, :stop => true
     action [ :enable]
-    ignore_failure true #Restarting the server failes the first (ie stop fails) time, since it's not running yet.
 end
 
 myid = node['ipaddress'].dup
@@ -79,7 +78,6 @@ template "zookeeper config" do
     group node['met-solr']['zookeeper']['user']
     mode "0755"
     variables :zookeeper_servers => zookeepers
-    notifies :restart, "service[zookeeper]"
 end
 
 zookeepers.each do |zookeeper|
