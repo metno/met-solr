@@ -36,6 +36,11 @@
     [ $status -eq 0 ]
 }
 
+@test "Firewall allows traffic to solr port from from a fixture node" {
+    run egrep "^### tuple ### allow tcp 8987 0.0.0.0/0 any 10.0.1.9 in" /lib/ufw/user.rules
+    [ "$status" -eq 0 ]
+}
+
 # Skip testing that zookeeper runs. It will not start before the second converge
 # This node is not defined before converge is finished, and zookeeper config does
 # not contain this node, and therefore refuses to start.

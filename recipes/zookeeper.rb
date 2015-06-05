@@ -95,4 +95,12 @@ zookeepers.each do |zookeeper|
         protocol :tcp
         action :allow
     end
+
+    # Allow connection to solr http port
+    firewall_rule "zookeeper #{zookeeper['ipaddress']}" do
+        port node['met-solr']['solr']['port']
+        source zookeeper['ipaddress']
+        protocol :tcp
+        action :allow
+    end
 end
