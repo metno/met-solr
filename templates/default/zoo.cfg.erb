@@ -32,5 +32,8 @@ initLimit=5
 syncLimit=2
 
 <% @zookeeper_servers.each do |server| %>
+<% if server['ipaddress'] != node['ipaddress'] then %>
 server.<%=server['ipaddress'].dup.delete! '.'%>=<%=server['ipaddress']%>:2888:3888
 <% end %>
+<% end %>
+server.<%=node['ipaddress'].dup.delete! '.'%>=<%=node['ipaddress']%>:2888:3888

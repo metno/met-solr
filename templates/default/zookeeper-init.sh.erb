@@ -46,7 +46,7 @@ ERROR_PROGRAM_NOT_CONFIGURED=6
 RETVAL=0
 SLEEP_TIME=3
 PROC_NAME="java"
-PIDFILE="/var/run/zookeeper/zookeeper-server.pid"
+PIDFILE="<%=node['met-solr']['zookeeper']['data_dir']%>/zookeeper_server.pid"
 EXEC_PATH="<%=node['met-solr']['zookeeper']['install_dir']%>/zookeeper/bin/zkServer.sh"
 
 DAEMON="zookeeper"

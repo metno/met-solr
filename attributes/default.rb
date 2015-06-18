@@ -7,7 +7,7 @@ default['met-solr']['solr']['enable_cloud'] = true #Setting this launches solr i
 default['met-solr']['solr']['data_dir'] = "/var/solr-#{node['met-solr']['solr']['version']}"
 
 # This is not offered with https
-default['met-solr']['solr']['url'] = "http://apache.uib.no/lucene/solr/#{node['met-solr']['solr']['version']}/solr-#{node['met-solr']['solr']['version']}.tgz"
+default['met-solr']['solr']['url'] = "http://archive.apache.org/dist/lucene/solr/#{node['met-solr']['solr']['version']}/solr-#{node['met-solr']['solr']['version']}.tgz"
 
 default['met-solr']['solr']['install_java'] = true
 

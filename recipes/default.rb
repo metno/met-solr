@@ -42,7 +42,7 @@ execute "install solr" do
         File.directory?("#{node['met-solr']['solr']['dir']}/solr-#{node['met-solr']['solr']['version']}")
     end
     notifies :run, "execute[enable_cloud]", :immediately
-    notifies :start, 'service[solr]', :immediately
+    #notifies :start, 'service[solr]', :immediately
 end
 
 service 'solr' do
@@ -50,11 +50,16 @@ service 'solr' do
     supports :status => true, :start => true, :stop => true, :restart => true
 end
 
+# This won't return current node before the second converge ...
 zookeepers = search(:node, "chef_environment:#{node.chef_environment} AND recipes:met-solr\\:\\:zookeeper")
 zkstring = ""
 zookeepers.each do |zookeeper|
-    zkstring << zookeeper['ipaddress'] << ","
+    if zookeeper['ipaddress'] != node['ipaddress']
+        zkstring << zookeeper['ipaddress'] << ","
+    end
 end
+# So insert it here, to ensure, so restart does not fail.
+zkstring << node['ipaddress'] << ","
 
 template "solar include script" do
     path "#{node['met-solr']['solr']['data_dir']}/solr.in.sh"

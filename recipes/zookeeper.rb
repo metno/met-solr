@@ -78,6 +78,7 @@ template "zookeeper config" do
     group node['met-solr']['zookeeper']['user']
     mode "0755"
     variables :zookeeper_servers => zookeepers
+    notifies :restart, "service[zookeeper]"
 end
 
 zookeepers.each do |zookeeper|
