@@ -12,7 +12,6 @@ suites:
   - name: default
     run_list:
         - recipe[met-server::default]
-        - recipe[met-solr::zookeeper]
         - recipe[met-solr::default]
     attributes: {
         "met-solr": {

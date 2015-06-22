@@ -12,6 +12,8 @@ if Chef::Config[:solo]
 end
 
 include_recipe 'java' if node['met-solr']['solr']['install_java']
+include_recipe 'met-solr::zookeeper' if node['met-solr']['solr']['config_zookeeper']
+
 src_filename = ::File.basename(node['met-solr']['solr']['url'])
 src_filepath = "#{Chef::Config['file_cache_path']}/#{src_filename}"
 
